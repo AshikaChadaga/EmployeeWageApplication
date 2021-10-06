@@ -1,6 +1,5 @@
 console.log("******** Welcome To Employee Wage Computation Application *********");
 
-const IS_ABSENT = 0;
 const IS_PART_TIME = 1;
 const IS_FULL_TIME = 2;
 const PART_TIME_HOURS = 4;
@@ -9,9 +8,9 @@ const WAGE_PER_HOUR = 20;
 const NUM_OF_WORKING_DAYS = 20;
 const MAX_HOURS_IN_MONTH = 100;
 
-let employeeHours = 0;
 let totalEmployeeHours = 0;
 let totalWorkingDays = 0;
+let totalEmployeeWage = 0;
 let employeeDailyWageArray = new Array();
 
 function getWorkingHours(employeeCheck) {
@@ -33,15 +32,30 @@ function getWorkingHours(employeeCheck) {
 }
 
 function calculateDailyWage(employeeHours) {
-    return employeeHours * WAGE_PER_HOUR
+    return employeeHours * WAGE_PER_HOUR;
+}
+
+function totalWage(dailyWage){
+    totalEmployeeWage += dailyWage;
+}
+
+function totalWageUsingReduce(totalWage, dailyWage){
+    return totalWage + dailyWage;
 }
 
 while (totalEmployeeHours <= MAX_HOURS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS) {
     totalWorkingDays++;
     let employeeCheck = Math.floor(Math.random() * 10) % 3;
-    totalEmployeeHours += getWorkingHours(employeeCheck);
+    let employeeHours = getWorkingHours(employeeCheck);
+    totalEmployeeHours += employeeHours;
     employeeDailyWageArray.push(calculateDailyWage(employeeHours));
 }
 
-let totalEmployeeWage = calculateDailyWage(totalEmployeeHours);
+//Calculating Total Employee Wage Using ForEach
+employeeDailyWageArray.forEach(totalWage);
 console.log("\nTotal Working Days = " + totalWorkingDays + "\nTotal Working Hours = " + totalEmployeeHours + "\nTotal Employee Wage = " + totalEmployeeWage);
+
+//Calculating Total Employee Wage Using Reduce
+console.log("Employee Wage With Reduce : " + employeeDailyWageArray.reduce(totalWageUsingReduce, 0));
+
+
