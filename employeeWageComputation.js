@@ -53,6 +53,10 @@ function fullTimeWage(dailyWage){
     return dailyWage.includes("160");
 }
 
+function findFullTimeWage(dailyWage){
+    return dailyWage.includes("160");
+}
+
 while (totalEmployeeHours <= MAX_HOURS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS) {
     totalWorkingDays++;
     let employeeCheck = Math.floor(Math.random() * 10) % 3;
@@ -83,7 +87,12 @@ console.log(fullDayWageArray);
 
 //Use Case - 7D
 //Find first occurence when full time wage was eared using find function
-function findFullTimeWage(dailyWage){
+console.log("First Full Time Wage was Earned on Day : " + mapDayWithWageArray.find(findFullTimeWage));
+
+//Use Case - 7E
+//Check if every element of full time wage is truely holding full time wage
+function isAllFullTimeWage(dailyWage){
     return dailyWage.includes("160");
 }
-console.log("first Full Time Wage was Earned  on Day : " + mapDayWithWageArray.find(findFullTimeWage));
+console.log("Check All Elemnet Have Full Time Wage: " + fullDayWageArray.every(isAllFullTimeWage));
+
