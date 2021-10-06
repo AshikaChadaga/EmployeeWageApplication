@@ -51,6 +51,7 @@ while (totalEmployeeHours <= MAX_HOURS_IN_MONTH && totalWorkingDays < NUM_OF_WOR
     employeeDailyWageArray.push(calculateDailyWage(employeeHours));
 }
 
+//Use Case - 7A
 //Calculating Total Employee Wage Using ForEach
 employeeDailyWageArray.forEach(totalWage);
 console.log("\nTotal Working Days = " + totalWorkingDays + "\nTotal Working Hours = " + totalEmployeeHours + "\nTotal Employee Wage = " + totalEmployeeWage);
@@ -58,4 +59,16 @@ console.log("\nTotal Working Days = " + totalWorkingDays + "\nTotal Working Hour
 //Calculating Total Employee Wage Using Reduce
 console.log("Employee Wage With Reduce : " + employeeDailyWageArray.reduce(totalWageUsingReduce, 0));
 
+//Use Case - 7B
+//Print day along with daily wage 
+let dayCounter = 0;
+
+function mapDayWithDailyWage(dailyWage){
+    dayCounter ++;
+    return "Day " + dayCounter + " = " + dailyWage;
+}
+
+let mapDayWithWageArray = employeeDailyWageArray.map(mapDayWithDailyWage);
+console.log("Daily Wage Map : ");
+console.log(mapDayWithWageArray);
 
