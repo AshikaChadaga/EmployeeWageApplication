@@ -49,6 +49,10 @@ function mapDayWithDailyWage(dailyWage){
     return "Day " + dayCounter + " = " + dailyWage;
 }
 
+function fullTimeWage(dailyWage){
+    return dailyWage.includes("160");
+}
+
 while (totalEmployeeHours <= MAX_HOURS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS) {
     totalWorkingDays++;
     let employeeCheck = Math.floor(Math.random() * 10) % 3;
@@ -73,10 +77,13 @@ console.log(mapDayWithWageArray);
 
 //Use Case - 7C
 //Show days when full time Wage of 160 is earned
-function fullTimeWage(dailyWage){
-    return dailyWage.includes("160");
-}
 let fullDayWageArray = mapDayWithWageArray.filter(fullTimeWage);
 console.log("Daily Wage Filter When Full Time Wage Earned : ");
 console.log(fullDayWageArray);
 
+//Use Case - 7D
+//Find first occurence when full time wage was eared using find function
+function findFullTimeWage(dailyWage){
+    return dailyWage.includes("160");
+}
+console.log("first Full Time Wage was Earned  on Day : " + mapDayWithWageArray.find(findFullTimeWage));
