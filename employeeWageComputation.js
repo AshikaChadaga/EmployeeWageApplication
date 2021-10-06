@@ -11,6 +11,7 @@ const MAX_HOURS_IN_MONTH = 100;
 let totalEmployeeHours = 0;
 let totalWorkingDays = 0;
 let totalEmployeeWage = 0;
+let dayCounter = 0;
 let employeeDailyWageArray = new Array();
 
 function getWorkingHours(employeeCheck) {
@@ -43,6 +44,11 @@ function totalWageUsingReduce(totalWage, dailyWage){
     return totalWage + dailyWage;
 }
 
+function mapDayWithDailyWage(dailyWage){
+    dayCounter ++;
+    return "Day " + dayCounter + " = " + dailyWage;
+}
+
 while (totalEmployeeHours <= MAX_HOURS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS) {
     totalWorkingDays++;
     let employeeCheck = Math.floor(Math.random() * 10) % 3;
@@ -60,15 +66,17 @@ console.log("\nTotal Working Days = " + totalWorkingDays + "\nTotal Working Hour
 console.log("Employee Wage With Reduce : " + employeeDailyWageArray.reduce(totalWageUsingReduce, 0));
 
 //Use Case - 7B
-//Print day along with daily wage 
-let dayCounter = 0;
-
-function mapDayWithDailyWage(dailyWage){
-    dayCounter ++;
-    return "Day " + dayCounter + " = " + dailyWage;
-}
-
+//Print day along with daily wage
 let mapDayWithWageArray = employeeDailyWageArray.map(mapDayWithDailyWage);
 console.log("Daily Wage Map : ");
 console.log(mapDayWithWageArray);
+
+//Use Case - 7C
+//Show days when full time Wage of 160 is earned
+function fullTimeWage(dailyWage){
+    return dailyWage.includes("160");
+}
+let fullDayWageArray = mapDayWithWageArray.filter(fullTimeWage);
+console.log("Daily Wage Filter When Full Time Wage Earned : ");
+console.log(fullDayWageArray);
 
