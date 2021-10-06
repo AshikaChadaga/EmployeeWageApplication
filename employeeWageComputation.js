@@ -61,6 +61,10 @@ function isAllFullTimeWage(dailyWage){
     return dailyWage.includes("160");
 }
 
+function isAnyPartTimeWage(dailyWage){
+    return dailyWage.includes("80");
+}
+
 while (totalEmployeeHours <= MAX_HOURS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS) {
     totalWorkingDays++;
     let employeeCheck = Math.floor(Math.random() * 10) % 3;
@@ -97,9 +101,15 @@ console.log("First Full Time Wage was Earned on Day : " + mapDayWithWageArray.fi
 //Check if every element of full time wage is truely holding full time wage
 console.log("Check All Element Have Full Time Wage: " + fullDayWageArray.every(isAllFullTimeWage));
 
-//Ue Case - 7F
+//Use Case - 7F
 //Check if ther eis any Part Time Wages
-function isAnyPartTimeWage(dailyWage){
-    return dailyWage.includes("80");
-}
 console.log("Check If Any Part Time Wage: " + mapDayWithWageArray.some(isAnyPartTimeWage));
+
+//Use Case - 7G
+//Find Number of days the Employee Worked
+function totalDaysWorked(numberOfDays, dailyWage){
+    if(dailyWage > 0)
+        return numberOfDays + 1;
+    return numberOfDays;
+}
+console.log("Numbe rof Days the Employee has Worked = " + employeeDailyWageArray.reduce(totalDaysWorked, 0));
