@@ -1,7 +1,4 @@
 class EmployeePayrollData{
-    id;
-    salary;
-    name;
 
     constructor(id, name, salary){
         this.id = id;
@@ -9,12 +6,29 @@ class EmployeePayrollData{
         this.salary = salary;
     }
 
+    get id(){
+        return this._id;
+    }
+
+    set id(id){
+        this._id = id;
+    }
+
     get name(){
         return this._name;
     }
 
     set name(name){
+        console.log("Setting name");
         this._name = name;
+    }
+
+    get salary(){
+        return this._salary;
+    }
+
+    set salary(salary){
+        this._salary = salary;
     }
 
     toString(){
