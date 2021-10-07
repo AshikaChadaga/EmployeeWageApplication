@@ -193,6 +193,13 @@ let totalHours = employeeDailyWageAndHoursArray
 console.log("\nTotal Hours = " + totalHours + "\nTotal Wages = " + totalWages);
 
 //11B
-process.stdout.write("Logging Full Work Days : ")
-employeeDailyWageAndHoursArray.filter(dailyHoursAndWage => dailyHoursAndWage.dailyHours == 8)
-                            .forEach(dailyHoursAndWage => process.stdout.write(dailyHoursAndWage.toString()));
+process.stdout.write("\nLogging Full Work Days : ");
+employeeDailyWageAndHoursArray
+    .filter(dailyHoursAndWage => dailyHoursAndWage.dailyHours == 8)
+    .forEach(dailyHoursAndWage => process.stdout.write(dailyHoursAndWage.toString()));
+
+//11C
+let partTimeWorkingDaysStringArray = employeeDailyWageAndHoursArray
+                                    .filter(dailyHoursAndWage => dailyHoursAndWage.dailyHours == 4)
+                                    .map(dailyHoursAndWage => dailyHoursAndWage.toString());
+console.log("\n\nPart Time Working Days : " + partTimeWorkingDaysStringArray);
